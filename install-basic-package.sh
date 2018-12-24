@@ -117,9 +117,9 @@ if ! grep -q 'alias rm' /etc/bash.bashrc; then
     echo "alias del='trash'" >>/etc/bash.bashrc
 fi
 
-apt_install apt-transport-https curl pwgen cpulimit nfs-common gcc
+apt_install apt-transport-https curl pwgen cpulimit gcc
 apt_install vim emacs tmux screen sshfs htop moreutils colordiff
-apt_install linuxbrew-wrapper p7zip-full rar unrar pbzip2
+apt_install p7zip-full rar unrar pbzip2
 apt_install mosh autojump hdfview dcmtk ncdu
 apt_install automake libtool cmake jq uuid libgtk2.0-dev pkg-config 
 apt_install libzip-dev monit pv iperf iftop
@@ -146,11 +146,12 @@ npm install --global prettier
 # pip install yapf
 
 # csvkit
-if [ os == 'Ubuntu:14' || os == 'Ubuntu:16' ]; then
-  apt_install python3-csvkit
-else
-  apt_install csvkit
-fi
+# conda install csvkit
+#if [ os == 'Ubuntu:14' || os == 'Ubuntu:16' ]; then
+#  apt_install python3-csvkit
+#else
+#  apt_install csvkit
+#fi
 
 apt_install -y pv lzop mbuffer libconfig-inifiles-perl
 # for centos/rhel
