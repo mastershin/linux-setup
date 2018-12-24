@@ -1,0 +1,44 @@
+# To be appened to .bashrc
+
+# hub
+eval "$(hub alias -s)"
+
+# colors!
+red="\[\033[38;5;203m\]"
+green="\[\033[38;05;38m\]"
+blue="\[\033[0;34m\]"
+reset="\[\033[0m\]"
+
+function timer_start {
+  timer=${timer:-$SECONDS}
+}
+function timer_stop {
+  timer_show=$(($SECONDS - $timer))
+  unset timer
+}
+trap 'timer_start' DEBUG
+if [ "$PROMPT_COMMAND" == "" ]; then
+  PROMPT_COMMAND="timer_stop"
+else
+  PROMPT_COMMAND="$PROMPT_COMMAND; timer_stop"
+fi
+PROMPT_COMMAND="$PROMPT_COMMAND; history -a"
+
+export GIT_PS1_SHOWDIRTYSTATE=1
+
+# '\u' adds the name of the current user to the prompt
+# '\$(__git_ps1)' adds git-related stuff
+# '\W' adds the name of the current directory
+RETURN_STATUS="\$([ \$? == 0 ] && echo ✅  || echo ⚠️ )"
+PS1="$RETURN_STATUS"' [${timer_show}s]'" ${reset}\u ${blue}<I'm successful!> $red\h$green\$(__git_ps1)$blue \w
+$ $reset"
+
+# without git (for slow network)
+# with last elapsed
+#PS1='[last: ${timer_show}s]'" $red\u@\h$green$blue \w
+#$ $reset"
+# with exit val & last elapsed
+         #PS1="$RETURN_STATUS "'[${timer_show}s]'" ${reset}\u ${blue}<We are successful.> $red\h$green$blue \w
+         #$ $reset"
+
+. /usr/share/autojump/autojump.sh
