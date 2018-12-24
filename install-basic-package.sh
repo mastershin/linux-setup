@@ -50,9 +50,14 @@ else
   die 'Not supported yet.'
 fi
 
-if ! grep -q "/snap/bin" /etc/environment; then
-   echo 'add /snap/bin to etc/environment'
-   exit 1
+# snapd seems to fail on Ubuntu 14
+if [ $os != 'Ubuntu:14' ]; then
+  apt_install snapd
+
+  if ! grep -q "/snap/bin" /etc/environment; then
+    echo 'add /snap/bin to etc/environment'
+    exit 1
+  fi
 fi
 
 echo "
@@ -81,8 +86,10 @@ ls -f1 $@ | sort | tail -n+3
 fi
 
 # ntp
-timedatectl set-ntp no
-apt_install ntp
+# apt_install ntp
+# if [ $os != 'Ubuntu:14' ]; then
+#   timedatectl set-ntp no
+# fi
 
 # useful git alias
 apt_install git
@@ -94,8 +101,12 @@ git config --global gc.auto 256
 git config --system credential.helper 'cache --timeout 2880000'
 
 apt_install gcc
-/snap/bin/go get github.com/github/hub
-cp ~/go/bin/hub /usr/local/bin
+
+# install Go v1.11
+# wget https://dl.google.com/go/go1.11.4.linux-amd64.tar.gz -O /tmp/go1.11.4.tgz
+# sudo tar -C /usr/local -xzf /tmp/go1.11.4.tgz
+# go get github.com/github/hub
+# cp ~/go/bin/hub /usr/local/bin
 
 # general. For remote-server, install watchdog
 apt_install inotify-tools trash-cli
