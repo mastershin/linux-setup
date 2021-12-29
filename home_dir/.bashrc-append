@@ -1,13 +1,26 @@
 # To be appened to .bashrc
 
+# allow ssh and change to current directory in a remote host (for network path only)
+sshcd() { ssh -t $1 "cd '$(pwd)'; ${@:2}"; }
+
+# if __git_ps1 is not found, download git-prompt.sh and put in user dir or system-wide path.
+# sudo curl -o /etc/bash_completion.d/git-prompt.sh https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh
+#
+# or if no sudo, then, save to home directory, and uncomment second line
+# curl -o ~/.git-prompt.sh https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh
+# . ~/.git-prompt.sh
+
 # hub
-eval "$(hub alias -s)"
+# eval "$(hub alias -s)"
 
 # colors!
 red="\[\033[38;5;203m\]"
 green="\[\033[38;05;38m\]"
 blue="\[\033[0;34m\]"
 reset="\[\033[0m\]"
+yellow="\033[0;33m"
+ochre="\033[38;5;95m"
+white="\033[0;37m"
 
 function timer_start {
   timer=${timer:-$SECONDS}
@@ -33,12 +46,5 @@ RETURN_STATUS="\$([ \$? == 0 ] && echo ✅  || echo ⚠️ )"
 PS1="$RETURN_STATUS"' [${timer_show}s]'" ${reset}\u ${blue}<I'm successful!> $red\h$green\$(__git_ps1)$blue \w
 $ $reset"
 
-# without git (for slow network)
-# with last elapsed
-#PS1='[last: ${timer_show}s]'" $red\u@\h$green$blue \w
-#$ $reset"
-# with exit val & last elapsed
-         #PS1="$RETURN_STATUS "'[${timer_show}s]'" ${reset}\u ${blue}<We are successful.> $red\h$green$blue \w
-         #$ $reset"
-
+# only if autojump is installed
 . /usr/share/autojump/autojump.sh
