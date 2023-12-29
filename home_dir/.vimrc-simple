@@ -1,6 +1,8 @@
 " Enable filetype plugins
 filetype plugin indent on
 
+syntax on
+
 " Set tabs to be replaced with spaces
 set expandtab
 
