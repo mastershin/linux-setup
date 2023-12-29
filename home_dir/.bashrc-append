@@ -1,4 +1,5 @@
 # To be appened to .bashrc
+# two-line command prompt with time elapsed, git status
 
 # allow ssh and change to current directory in a remote host (for network path only)
 sshcd() { ssh -t $1 "cd '$(pwd)'; ${@:2}"; }
@@ -14,13 +15,19 @@ sshcd() { ssh -t $1 "cd '$(pwd)'; ${@:2}"; }
 # eval "$(hub alias -s)"
 
 # colors!
-red="\[\033[38;5;203m\]"
-green="\[\033[38;05;38m\]"
-blue="\[\033[0;34m\]"
-reset="\[\033[0m\]"
-yellow="\033[0;33m"
-ochre="\033[38;5;95m"
-white="\033[0;37m"
+GRAY="\[\033[01;29m\]"
+DARKGRAY="\[\033[01;30m\]"
+RED="\[\033[01;31m\]"
+YELLOW="\[\033[01;32m\]"
+ORANGE="\[\033[01;33m\]"
+BLUE="\[\033[01;34m\]"
+MAGENTA="\[\033[01;35m\]"
+CYAN="\[\033[01;36m\]"
+LIGHTPINK="\[\033[01;37m\]"
+WHITE="\[\033[01;38m\]"
+OCHRE="\[\033[38;5;95m\]"
+
+RESETCOLOR="\[\033[00m\]"
 
 function timer_start {
   timer=${timer:-$SECONDS}
@@ -38,12 +45,17 @@ fi
 PROMPT_COMMAND="$PROMPT_COMMAND; history -a"
 
 export GIT_PS1_SHOWDIRTYSTATE=1
-
+function parse_git_dirty {
+  [[ $(git status --porcelain 2> /dev/null) ]] && echo "*"
+}
+function parse_git_branch {
+  git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/ (\1$(parse_git_dirty))/"
+}
 # '\u' adds the name of the current user to the prompt
 # '\$(__git_ps1)' adds git-related stuff
 # '\W' adds the name of the current directory
 RETURN_STATUS="\$([ \$? == 0 ] && echo ✅  || echo ⚠️ )"
-PS1="$RETURN_STATUS"' [${timer_show}s]'" ${reset}\u ${blue}<I'm successful!> $red\h$green\$(__git_ps1)$blue \w
+PS1="$RETURN_STATUS"' [${timer_show}s]'" ${RESETCOLOR}\u ${BLUE}<I'm successful!> $RED\h$GREEN\$(parse_git_branch)$BLUE \w
 $ $reset"
 
 # only if autojump is installed
