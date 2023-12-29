@@ -17,10 +17,14 @@ MAGENTA="\[\033[01;35m\]"
 CYAN="\[\033[01;36m\]"
 LIGHTPINK="\[\033[01;37m\]"
 WHITE="\[\033[01;38m\]"
+OCHRE="\[\033[38;5;95m\]"
+
 USERNAME_COLOR=$GRAY
 HOSTNAME_COLOR=$WHITE
+
 RESETCOLOR="\[\033[00m\]"
-export PS1="$USERNAME_COLOR\u${RESETCOLOR}@${HOSTNAME_COLOR}\h\[\033[01;34m\] \t \[\033[32m\]\w\[\033[33m\]\$(parse_git_branch)\[\033[00m\] $ "
+RETURN_STATUS="\$([ \$? == 0 ] && echo ✅  || echo ⚠️ )"
+export PS1="$RETURN_STATUS $USERNAME_COLOR\u${RESETCOLOR}@${HOSTNAME_COLOR}\h\$BLUE \t $YELLOW\w$ORANGE\$(parse_git_branch)$RESETCOLOR $ "
 
 alias ll='ls -AltF --color=auto'
 alias la='ls -A --color=auto'
