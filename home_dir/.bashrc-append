@@ -44,19 +44,14 @@ else
 fi
 PROMPT_COMMAND="$PROMPT_COMMAND; history -a"
 
-export GIT_PS1_SHOWDIRTYSTATE=1
-function parse_git_dirty {
-  [[ $(git status --porcelain 2> /dev/null) ]] && echo "*"
-}
-function parse_git_branch {
-  git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/ (\1$(parse_git_dirty))/"
-}
-# '\u' adds the name of the current user to the prompt
-# '\$(__git_ps1)' adds git-related stuff
-# '\W' adds the name of the current directory
 RETURN_STATUS="\$([ \$? == 0 ] && echo ✅  || echo ⚠️ )"
-PS1="$RETURN_STATUS"' [${timer_show}s]'" ${RESETCOLOR}\u ${BLUE}<I'm successful!> $RED\h$GREEN\$(parse_git_branch)$BLUE \w
-$ $reset"
+# export PS1="$USERNAME_COLOR\u${RESETCOLOR}@${HOSTNAME_COLOR}\h\[\033[01;34m\] \t \[\033[32m\]\w\[\033[33m\]\$(parse_git_branch)\[\033[00m\] $ "
+export PS1="$RETURN_STATUS"' [${timer_show}s]'" $USERNAME_COLOR\u${RESETCOLOR}@${HOSTNAME_COLOR}\h\[\033[01;34m\] \t \[\033[32m\]\w\[\033[33m\]\$(parse_git_branch)\[\033[00m\] $ "
+
+alias ll='ls -AltF --color=auto'
+alias la='ls -A --color=auto'
+alias l='ls -CF --color=auto'
+alias ls='ls --color=auto'
 
 # only if autojump is installed
-. /usr/share/autojump/autojump.sh
+[ -f /usr/share/autojump/autojump.sh ] && { . /usr/share/autojump/autojump.sh; }
