@@ -24,7 +24,7 @@ HOSTNAME_COLOR=$WHITE
 
 RESETCOLOR="\[\033[00m\]"
 RETURN_STATUS="\$([ \$? == 0 ] && echo ✅  || echo ⚠️ )"
-export PS1="$RETURN_STATUS $USERNAME_COLOR\u${RESETCOLOR}@${HOSTNAME_COLOR}\h\$BLUE \t $YELLOW\w$ORANGE\$(parse_git_branch)$RESETCOLOR $ "
+export PS1="$RETURN_STATUS $USERNAME_COLOR\u${RESETCOLOR}@${HOSTNAME_COLOR}\h \t $YELLOW\w$ORANGE\$(parse_git_branch)$RESETCOLOR $ "
 
 alias ll='ls -AltF --color=auto'
 alias la='ls -A --color=auto'
