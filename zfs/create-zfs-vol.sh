@@ -22,5 +22,7 @@ fi
 
 echo "Command Template:"
 echo "# zpool create zfs raidz ${ID_DEVICES[@]}"
+echo "# zfs set compression=lz4 zfs"
+echo "# zfs set atime=off zfs"
 echo
 
