@@ -2,6 +2,7 @@
 
 # Given list of /dev/sd* devices, print out disk by id, for creating zpool volume
 # The actual command is printed out, but, not executed.  Manually run zfs command.
+# @author: mastershin at gmail
 
 for DEVICE in $@; do
     # Fetch the symlink target for the device from /dev/disk/by-id/
