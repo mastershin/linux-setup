@@ -2,10 +2,7 @@
 Initial common linux setup that I collected over the years.
 
 ## Requirements
-* Ubuntu 14
-* Ubuntu 16
-* Ubuntu 18
-* Redhat (coming soon)
+* Ubuntu 22
 
 ## Installation
 This will update system packages
