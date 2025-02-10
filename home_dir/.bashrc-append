@@ -14,8 +14,11 @@ sshcd() { ssh -t $1 "cd '$(pwd)'; ${@:2}"; }
 # hub
 # eval "$(hub alias -s)"
 
-parse_git_branch() {
-     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+function parse_git_dirty {
+  [[ $(git status --porcelain 2> /dev/null) ]] && echo "*"
+}
+function parse_git_branch {
+  git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/ (\1$(parse_git_dirty))/"
 }
 
 # colors!
@@ -33,13 +36,8 @@ OCHRE="\[\033[38;5;95m\]"
 
 RESETCOLOR="\[\033[00m\]"
 
-function timer_start {
-  timer=${timer:-$SECONDS}
-}
-function timer_stop {
-  timer_show=$(($SECONDS - $timer))
-  unset timer
-}
+function timer_start { timer=${timer:-$SECONDS}; }
+function timer_stop { timer_show=$(($SECONDS - $timer)); unset timer; }
 trap 'timer_start' DEBUG
 if [ "$PROMPT_COMMAND" == "" ]; then
   PROMPT_COMMAND="timer_stop"
@@ -50,6 +48,10 @@ PROMPT_COMMAND="$PROMPT_COMMAND; history -a"
 
 RETURN_STATUS="\$([ \$? == 0 ] && echo ✅  || echo ⚠️ )"
 # export PS1="$USERNAME_COLOR\u${RESETCOLOR}@${HOSTNAME_COLOR}\h\[\033[01;34m\] \t \[\033[32m\]\w\[\033[33m\]\$(parse_git_branch)\[\033[00m\] $ "
+
+# for root, make it red color
+[[ $USER == 'root' ]] && USERNAME_COLOR=$RED
+
 export PS1="$RETURN_STATUS"' [${timer_show}s]'" $USERNAME_COLOR\u${RESETCOLOR}@${HOSTNAME_COLOR}\h\[\033[01;34m\] \t \[\033[32m\]\w\[\033[33m\]\$(parse_git_branch)\[\033[00m\] $ "
 
 alias ll='ls -AltF --color=auto'
