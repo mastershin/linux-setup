@@ -1,6 +1,9 @@
 # To be appened to .bashrc
 # two-line command prompt with time elapsed, git status
 
+HISTTIMEFORMAT="%F|%T "
+export EDITOR=vim
+
 # allow ssh and change to current directory in a remote host (for network path only)
 sshcd() { ssh -t $1 "cd '$(pwd)'; ${@:2}"; }
 

@@ -1,5 +1,8 @@
 export PATH=/opt/homebrew/bin:$PATH
 
+HISTTIMEFORMAT="%F|%T "
+export EDITOR=vim
+
 function parse_git_dirty {
   [[ $(git status --porcelain 2> /dev/null) ]] && echo "*"
 }
