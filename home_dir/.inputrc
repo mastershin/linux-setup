@@ -1,7 +1,17 @@
+# [A  up
+# [B  down
 "\e[A": history-search-backward
 "\eOA": history-search-backward
 "\e[B": history-search-forward
 "\eOB": history-search-forward
+
+# [5~ page up
+# [6~ page down
+"\e[5~": previous-history
+"\e[6~": next-history
+"\C-x\C-l": complete
+"\C-x\C-n": menu-complete
+"\C-x\C-p": menu-complete-backward
 
 #use ctl keys to move forward and back in words
 #bind '"\eOC":forward-word'
