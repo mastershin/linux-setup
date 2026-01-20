@@ -7,13 +7,13 @@ sudo apt update
 sudo bash install-basic-package.sh
 ```
 
-## Developer Utils (bash)
-
+## Developer Utils (brew / Mac)
 ```
-#####################################################################################
-# fzf (fuzzy find using homebrew / mac)
-brew install fzf
+brew install fzf zoxide fd ripgrep
+```
 
+## Developer Utils (bash / Linux)
+```
 #####################################################################################
 # fzf (download binary release) to ~/.local/bin
 wget -qO- https://github.com/junegunn/fzf/releases/download/v0.67.0/fzf-0.67.0-linux_amd64.tar.gz | tar -xz -C ~/.local/bin
