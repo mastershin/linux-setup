@@ -6,4 +6,13 @@ brew install starship
 
 # add to ~/.bashrc
 eval "$(starship init bash)"
+
+
+
+```
+
+## ~/.config/starship.toml
+```
+[python]
+symbol = "👾 "
 ```
