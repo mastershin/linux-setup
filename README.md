@@ -10,6 +10,9 @@ sudo bash install-basic-package.sh
 ## Developer Utils (brew / Mac)
 ```
 brew install fzf zoxide fd ripgrep bat
+
+# for Jetbrains Mono Nerd Font
+brew install --cask font-jetbrains-mono-nerd-font
 ```
 
 ## Developer Utils (bash / Linux)
