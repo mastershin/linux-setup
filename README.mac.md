@@ -34,6 +34,15 @@ show_always = true
 style_user = "bold blue"
 format = "[$user]($style)@"
 
+[git_branch]
+symbol = "🌱 "
+style = "bold purple"
+format = "on [$symbol$branch]($style) "
+
+[git_status]
+style = "red"
+format = "([$all_status$ahead_behind]($style) )"
+
 [cmd_duration]
 min_time = 2000   # Show only if command takes longer than 2000ms (2s)
 format = "took [$duration]($style) "
