@@ -39,3 +39,41 @@ wget -qO- https://github.com/BurntSushi/ripgrep/releases/download/15.1.0/ripgrep
 wget -qO- https://github.com/sharkdp/bat/releases/download/v0.26.1/bat-v0.26.1-x86_64-unknown-linux-gnu.tar.gz | tar -xz -C ~/.local/bin --strip-components=1 --wildcards '*/bat'
 
 ```
+
+# AI Agent
+## OpenCode + Ollama + gpt-oss
+
+`~/.config/opencode/opencode.json`
+```
+{
+  "$schema": "https://opencode.ai/config.json",
+  "provider": {
+    "ollama": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "Ollama",
+      "options": {
+        "baseURL": "http://localhost:11434/v1"
+      },
+      "models": {
+        "gpt-oss": {
+          "name": "gpt-oss"
+        }
+      }
+    }
+  }
+}
+```
+
+## Claude Code + Ollama + gpt-oss
+`claude-ollama.sh`
+```
+#!/bin/bash
+DEFAULT_OLLAMA_HOST="localhost"
+DEFAULT_MODEL="gpt-oss"
+DEFAULT_ANTHROPIC_BASE_URL=$DEFAULT_OLLAMA_HOST
+if [ -z "$1" ]; then
+    ANTHROPIC_AUTH_TOKEN=ollama ANTHROPIC_BASE_URL=$DEFAULT_ANTHROPIC_BASE_URL claude --model "$DEFAULT_MODEL"
+else
+    ANTHROPIC_AUTH_TOKEN=ollama ANTHROPIC_BASE_URL=$DEFAULT_ANTHROPIC_BASE_URL claude --model "$@"
+fi
+```
