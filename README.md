@@ -42,8 +42,8 @@ wget -qO- https://github.com/sharkdp/bat/releases/download/v0.26.1/bat-v0.26.1-x
 
 # AI Agent
 ## OpenCode + Ollama + gpt-oss
-
-`~/.config/opencode/opencode.json`
+Install `curl -fsSL https://opencode.ai/install | bash`
+Create `~/.config/opencode/opencode.json`
 ```
 {
   "$schema": "https://opencode.ai/config.json",
@@ -65,8 +65,9 @@ wget -qO- https://github.com/sharkdp/bat/releases/download/v0.26.1/bat-v0.26.1-x
 ```
 
 ## Claude Code + Ollama + gpt-oss
-`claude-ollama.sh`
-```
+Install `curl -fsSL https://claude.ai/install.sh | bash`
+Create `claude-ollama.sh`
+```bash
 #!/bin/bash
 DEFAULT_OLLAMA_HOST="localhost"
 DEFAULT_MODEL="gpt-oss"
