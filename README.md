@@ -78,3 +78,15 @@ else
     ANTHROPIC_AUTH_TOKEN=ollama ANTHROPIC_BASE_URL=$DEFAULT_ANTHROPIC_BASE_URL claude --model "$@"
 fi
 ```
+
+## OpenAI Codex + Ollama + gps-oss
+Install `npm i -g @openai/codex` and then run `codex --oss -m gpt-oss:20b` or create `~/.codex/config.toml`
+```bash
+model = "gpt-oss:20b"
+model_provider = "ollama"
+
+[model_providers.ollama]
+name = "Ollama"
+base_url = "https://ollama.com/v1"
+env_key = "OLLAMA_API_KEY"
+```
