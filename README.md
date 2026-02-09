@@ -15,6 +15,11 @@ brew install fzf zoxide fd ripgrep bat
 brew install --cask font-jetbrains-mono-nerd-font
 ```
 
+## Prompt
+
+Starship: `curl -sS https://starship.rs/install.sh | sh -s -- -b ~/.local/bin` and add `eval "$(starship init bash)"` to .bashrc
+
+
 ## Developer Utils (bash / Linux)
 ```
 #####################################################################################
