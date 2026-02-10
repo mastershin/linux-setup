@@ -93,5 +93,5 @@ model_provider = "ollama"
 [model_providers.ollama]
 name = "Ollama"
 base_url = "https://ollama.com/v1"
-env_key = "OLLAMA_API_KEY"
+env_key = "<<OLLAMA_API_KEY>>"
 ```
