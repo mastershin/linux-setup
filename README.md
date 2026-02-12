@@ -46,6 +46,10 @@ wget -qO- https://github.com/sharkdp/bat/releases/download/v0.26.1/bat-v0.26.1-x
 ```
 
 # AI Agent
+
+## Cline
+After installing node 24, install `npm install -g cline`
+
 ## OpenCode + Ollama + gpt-oss
 Install `curl -fsSL https://opencode.ai/install | bash`
 Create `~/.config/opencode/opencode.json`
