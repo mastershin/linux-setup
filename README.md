@@ -23,7 +23,7 @@ Starship: `curl -sS https://starship.rs/install.sh | sh -s -- -b ~/.local/bin` a
 ## Developer Utils (bash / Linux)
 ```bash
 ### Ubuntu/Debian package
-sudo apt install fzf zoxide fd-find ripgrep bat
+sudo apt install fzf zoxide fd-find ripgrep bat shellcheck
 ```
 ```bash
 ### fzf (download binary release) to ~/.local/bin
@@ -41,6 +41,9 @@ ARCH=$(uname -m) && wget -qO- https://github.com/BurntSushi/ripgrep/releases/dow
 
 ### bat
 ARCH=$(uname -m) && wget -qO- https://github.com/sharkdp/bat/releases/download/v0.26.1/bat-v0.26.1-${ARCH}-unknown-linux-gnu.tar.gz | tar -xz -C ~/.local/bin --strip-components=1 --wildcards '*/bat'
+
+### shellcheck
+ARCH=$(uname -m) && wget -qO- "https://github.com/koalaman/shellcheck/releases/download/stable/shellcheck-stable.linux.${ARCH}.tar.xz" | tar -xJv -C ~/.local/bin --strip-components=1
 
 ### ast-grep (via npm)
 npm install --global @ast-grep/cli
