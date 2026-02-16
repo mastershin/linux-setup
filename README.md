@@ -9,7 +9,7 @@ sudo bash install-basic-package.sh
 
 ## Developer Utils (brew / Mac)
 ```
-brew install fzf zoxide fd ripgrep bat
+brew install fzf zoxide fd ripgrep bat ast-grep
 
 # for Jetbrains Mono Nerd Font
 brew install --cask font-jetbrains-mono-nerd-font
@@ -21,28 +21,29 @@ Starship: `curl -sS https://starship.rs/install.sh | sh -s -- -b ~/.local/bin` a
 
 
 ## Developer Utils (bash / Linux)
+```bash
+### Ubuntu/Debian package
+sudo apt install fzf zoxide fd-find ripgrep bat
 ```
-#####################################################################################
-# fzf (download binary release) to ~/.local/bin
+```bash
+### fzf (download binary release) to ~/.local/bin
 wget -qO- https://github.com/junegunn/fzf/releases/download/v0.67.0/fzf-0.67.0-linux_amd64.tar.gz | tar -xz -C ~/.local/bin
 
-#####################################################################################
-# zoxide (z / autojump inspired cd)
+### zoxide (z / autojump inspired cd)
 curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
 echo 'eval "$(zoxide init bash)"' >>~/.bashrc
 
-#####################################################################################
-# fd (find alternative)
+### fd (find alternative)
 ARCH=$(uname -m) && wget -qO- "https://github.com/sharkdp/fd/releases/download/v10.3.0/fd-v10.3.0-${ARCH}-unknown-linux-gnu.tar.gz" | tar -xz -C ~/.local/bin --strip-components=1 --wildcards '*/fd'
 
-#####################################################################################
-# ripgrep
+### ripgrep
 ARCH=$(uname -m) && wget -qO- https://github.com/BurntSushi/ripgrep/releases/download/15.1.0/ripgrep-15.1.0-${ARCH}-unknown-linux-musl.tar.gz | tar -xz -C ~/.local/bin --strip-components=1 --wildcards '*/rg'
 
-#####################################################################################
-# bat
+### bat
 ARCH=$(uname -m) && wget -qO- https://github.com/sharkdp/bat/releases/download/v0.26.1/bat-v0.26.1-${ARCH}-unknown-linux-gnu.tar.gz | tar -xz -C ~/.local/bin --strip-components=1 --wildcards '*/bat'
 
+### ast-grep (via npm)
+npm install --global @ast-grep/cli
 ```
 
 # AI Agent
