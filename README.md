@@ -58,10 +58,15 @@ ARCH=$(uname -m) && wget -qO- "https://github.com/koalaman/shellcheck/releases/d
 ### ast-grep (via npm)
 npm install --global @ast-grep/cli
 
-### ruff, ty
+### ruff, ty, prek, zizmor
 uv tool install ruff
 uv tool install hatchling
+uv tool install prek
+uv tool install zizmor
 uvx ty check
+
+### actionlint
+bash <(curl https://raw.githubusercontent.com/rhysd/actionlint/main/scripts/download-actionlint.bash) && mv actionlint ~/.local/bin/
 
 ### For Node based development:
 npm install -g oxlint oxfmt vitest eslint-plugin-import
