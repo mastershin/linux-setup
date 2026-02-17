@@ -15,10 +15,20 @@ brew install fzf zoxide fd ripgrep bat ast-grep ruff
 brew install --cask font-jetbrains-mono-nerd-font
 ```
 
+## AI Agents Development
+
+### worktrunk via brew
+```bash
+brew install worktrunk && wt config shell install
+```
+### worktrunk via curl
+```bash
+curl --proto '=https' --tlsv1.2 -LsSf https://github.com/max-sixty/worktrunk/releases/download/v0.24.1/worktrunk-installer.sh | sh && wt config shell install
+```
+
 ## Prompt
 
 Starship: `curl -sS https://starship.rs/install.sh | sh -s -- -b ~/.local/bin` and add `eval "$(starship init bash)"` to .bashrc
-
 
 ## Developer Utils (bash / Linux)
 ```bash
@@ -49,8 +59,13 @@ ARCH=$(uname -m) && wget -qO- "https://github.com/koalaman/shellcheck/releases/d
 npm install --global @ast-grep/cli
 
 ### ruff, ty
-uv tool install ruff@latest
+uv tool install ruff
+uv tool install hatchling
 uvx ty check
+
+### For Node based development:
+npm install --save-dev oxlint oxfmt vitest eslint-plugin-import
+npm install typescript
 ```
 
 # AI Agent
