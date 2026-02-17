@@ -64,8 +64,8 @@ uv tool install hatchling
 uvx ty check
 
 ### For Node based development:
-npm install --save-dev oxlint oxfmt vitest eslint-plugin-import
-npm install typescript
+npm install -g oxlint oxfmt vitest eslint-plugin-import
+npm install -g typescript
 ```
 
 # AI Agent
