@@ -55,10 +55,11 @@ ARCH=$(uname -m) && wget -qO- https://github.com/sharkdp/bat/releases/download/v
 ### shellcheck
 ARCH=$(uname -m) && wget -qO- "https://github.com/koalaman/shellcheck/releases/download/stable/shellcheck-stable.linux.${ARCH}.tar.xz" | tar -xJv -C ~/.local/bin --strip-components=1
 
-### ast-grep (via npm)
-npm install --global @ast-grep/cli
+### ast-grep (via npm) - alternative: uv tool install (see below)
+# npm install --global @ast-grep/cli
 
-### ruff, ty, prek, zizmor
+### ast-grep, ruff, ty, prek, zizmor
+uv tool install ast-grep-cli
 uv tool install ruff
 uv tool install hatchling
 uv tool install prek
