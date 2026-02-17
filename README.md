@@ -9,7 +9,7 @@ sudo bash install-basic-package.sh
 
 ## Developer Utils (brew / Mac)
 ```
-brew install fzf zoxide fd ripgrep bat ast-grep
+brew install fzf zoxide fd ripgrep bat ast-grep ruff
 
 # for Jetbrains Mono Nerd Font
 brew install --cask font-jetbrains-mono-nerd-font
@@ -47,6 +47,10 @@ ARCH=$(uname -m) && wget -qO- "https://github.com/koalaman/shellcheck/releases/d
 
 ### ast-grep (via npm)
 npm install --global @ast-grep/cli
+
+### ruff, ty
+uv tool install ruff@latest
+uvx ty check
 ```
 
 # AI Agent
