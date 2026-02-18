@@ -59,6 +59,9 @@ ARCH=$(uname -m) && wget -qO- "https://github.com/koalaman/shellcheck/releases/d
 # npm install --global @ast-grep/cli
 
 ### ast-grep, ruff, ty, prek, zizmor
+# curl -LsSf https://astral.sh/uv/install.sh | sh
+# for tool in ast-grep-cli ruff hatchling prek zizmor; do uv tool install $tool; done
+
 uv tool install ast-grep-cli
 uv tool install ruff
 uv tool install hatchling
