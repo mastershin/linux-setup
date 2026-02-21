@@ -33,7 +33,10 @@ Starship: `curl -sS https://starship.rs/install.sh | sh -s -- -b ~/.local/bin` a
 ## Developer Utils (bash / Linux)
 ```bash
 ### Ubuntu/Debian package
-sudo apt install fzf zoxide fd-find ripgrep bat shellcheck
+sudo apt install fzf zoxide fd-find ripgrep bat shellcheck yazi
+
+# additional utils needed for chafa
+sudo apt install ffmpeg 7zip imagemagick
 ```
 ```bash
 ### fzf (download binary release) to ~/.local/bin
