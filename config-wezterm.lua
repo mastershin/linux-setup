@@ -1,5 +1,5 @@
-# For wezterm to use similar to iTerm2 key
-# ~/.config/wezterm/wezterm.lua
+-- For wezterm to use similar to iTerm2 key
+-- ~/.config/wezterm/wezterm.lua
 
 local wezterm = require 'wezterm'
 local config = wezterm.config_builder()
