@@ -44,7 +44,8 @@ wget -qO- https://github.com/junegunn/fzf/releases/download/v0.67.0/fzf-0.67.0-l
 
 ### zoxide (z / autojump inspired cd)
 curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
-echo 'eval "$(zoxide init bash)"' >>~/.bashrc
+echo 'command -v zoxide &> /dev/null && eval "$(zoxide init bash)"' >>~/.bashrc
+
 
 ### fd (find alternative)
 ARCH=$(uname -m) && wget -qO- "https://github.com/sharkdp/fd/releases/download/v10.3.0/fd-v10.3.0-${ARCH}-unknown-linux-gnu.tar.gz" | tar -xz -C ~/.local/bin --strip-components=1 --wildcards '*/fd'
