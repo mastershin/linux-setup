@@ -68,10 +68,20 @@ RETURN_STATUS="\$([ \$? == 0 ] && echo ✅  || echo ⚠️ )"
 
 export PS1="$RETURN_STATUS"' [${timer_show}s]'" $USERNAME_COLOR\u${RESETCOLOR}@${HOSTNAME_COLOR}\h\[\033[01;34m\] \t \[\033[32m\]\w\[\033[33m\]\$(parse_git_branch)\[\033[00m\] $ "
 
+# or if using starship
+# eval "$(starship init bash)"
+
 alias ll='ls -AltF --color=auto'
 alias la='ls -A --color=auto'
 alias l='ls -CF --color=auto'
 alias ls='ls --color=auto'
 
-# only if autojump is installed
-[ -f /usr/share/autojump/autojump.sh ] && { . /usr/share/autojump/autojump.sh; }
+# fd-fine
+alias fd='fdfind'
+
+# zoxide
+eval "$(zoxide init bash)"
+
+function title_set_bash() {
+  echo -ne "\033]1;$1\a"
+}
