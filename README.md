@@ -44,7 +44,7 @@ wget -qO- https://github.com/junegunn/fzf/releases/download/v0.67.0/fzf-0.67.0-l
 
 ### zoxide (z / autojump inspired cd)
 curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
-echo 'command -v zoxide &> /dev/null && eval "$(zoxide init bash)"' >>~/.bashrc
+# add this to .bashrc: `eval "$(zoxide init bash)"' >>~/.bashrc`
 
 
 ### fd (find alternative)
