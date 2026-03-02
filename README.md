@@ -135,3 +135,36 @@ name = "Ollama"
 base_url = "https://ollama.com/v1"
 env_key = "<<OLLAMA_API_KEY>>"
 ```
+
+## using Qwen3.5 35B-A3b FP8 vllm w/ nvidia (<100 GB)
+```
+services:
+  vllm-qwen:
+    image: vllm/vllm-openai:nightly
+    container_name: vllm-qwen3.5
+    runtime: nvidia
+    ports:
+      - "11435:8000"
+    volumes:
+      - ~/.cache/huggingface:/root/.cache/huggingface
+    environment:
+      - HF_TOKEN=${HF_TOKEN}
+      # Fix for the GCC/math conflict we discussed
+      - NVCC_APPEND_FLAGS=-D__STRICT_ANSI__
+    ipc: host
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    # The actual model launch command
+    command: >
+      --model Qwen/Qwen3.5-35B-A3B-FP8
+      --kv-cache-dtype fp8_e4m3
+      --max-model-len 32768
+      --trust-remote-code
+      --reasoning-parser qwen3
+    restart: unless-stopped
+```
