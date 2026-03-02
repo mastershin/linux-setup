@@ -149,8 +149,6 @@ services:
       - ~/.cache/huggingface:/root/.cache/huggingface
     environment:
       - HF_TOKEN=${HF_TOKEN}
-      # Fix for the GCC/math conflict we discussed
-      - NVCC_APPEND_FLAGS=-D__STRICT_ANSI__
     ipc: host
     deploy:
       resources:
