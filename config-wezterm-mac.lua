@@ -20,7 +20,11 @@ config.keys = {
   { key = '6', mods = 'ALT', action = wezterm.action.ActivateTab(5) },
   { key = '7', mods = 'ALT', action = wezterm.action.ActivateTab(6) },
   { key = '8', mods = 'ALT', action = wezterm.action.ActivateTab(7) },
-  { key = '9', mods = 'ALT', action = wezterm.action.ActivateTab(8) },  
+  { key = '9', mods = 'ALT', action = wezterm.action.ActivateTab(8) },
+  -- Move word backward (ALT + Left Arrow)
+  { key = 'LeftArrow', mods = 'ALT', action = wezterm.action.SendString '\x1bb', },
+  -- Move word forward (ALT + Right Arrow)
+  { key = 'RightArrow', mods = 'ALT', action = wezterm.action.SendString '\x1bf', },
   {
     -- Ctrl + Shift + Enter: toggle zoom
     key = 'Enter',
