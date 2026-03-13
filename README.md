@@ -82,9 +82,43 @@ npm install -g typescript
 ```
 
 # AI Agent
+## Popular choices (both offline and online)
+```
+# kilo
+npm install -g @kilocode/cli
 
-## Cline
-After installing node 24, install `npm install -g cline`
+# Claude Code
+curl -fsSL https://claude.ai/install.sh | bash
+
+# Gemini CLI
+npm install -g @google/gemini-cli
+
+# OpenAI Codex
+npm i -g @openai/codex
+```
+
+## Kilo
+Install `npm install -g @kilocode/cli`
+Create `~/.config/kilo/opencode.json`
+```
+{
+  "$schema": "https://opencode.ai/config.json",
+  "provider": {
+    "ollama": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "Ollama",
+      "options": {
+        "baseURL": "http://localhost:11434/v1"
+      },
+      "models": {
+        "gpt-oss": {
+          "name": "gpt-oss"
+        }
+      }
+    }
+  }
+}
+```
 
 ## OpenCode + Ollama + gpt-oss
 Install `curl -fsSL https://opencode.ai/install | bash`
@@ -136,6 +170,9 @@ base_url = "https://ollama.com/v1"
 env_key = "<<OLLAMA_API_KEY>>"
 ```
 
+## Cline
+After installing node 24, install `npm install -g cline`
+
 ## using Qwen3.5 35B-A3b FP8 vllm w/ nvidia (<100 GB)
 ```
 services:
@@ -161,7 +198,7 @@ services:
     command: >
       --model Qwen/Qwen3.5-35B-A3B-FP8
       --kv-cache-dtype fp8_e4m3
-      --max-model-len 32768
+      --max-model-len 131072
       --trust-remote-code
       --reasoning-parser qwen3
     restart: unless-stopped
