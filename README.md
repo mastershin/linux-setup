@@ -1,27 +1,20 @@
 # linux-setup
+
 Useful linux setup for developers.
+
 ## Installation
+
 This will update system packages
+
 ```bash
 sudo apt update
 sudo bash install-basic-package.sh
 ```
 
-## Developer Utils (brew / Mac)
-```
-brew install fzf zoxide fd ripgrep bat ast-grep ruff
-
-# for Jetbrains Mono Nerd Font
-brew install --cask font-jetbrains-mono-nerd-font
-```
-
 ## AI Agents Development
 
-### worktrunk via brew
-```bash
-brew install worktrunk && wt config shell install
-```
 ### worktrunk via curl
+
 ```bash
 curl --proto '=https' --tlsv1.2 -LsSf https://github.com/max-sixty/worktrunk/releases/download/v0.24.1/worktrunk-installer.sh | sh && wt config shell install
 ```
@@ -31,6 +24,7 @@ curl --proto '=https' --tlsv1.2 -LsSf https://github.com/max-sixty/worktrunk/rel
 Starship: `curl -sS https://starship.rs/install.sh | sh -s -- -b ~/.local/bin` and add `eval "$(starship init bash)"` to .bashrc
 
 ## Developer Utils (bash / Linux)
+
 ```bash
 ### Ubuntu/Debian package
 sudo apt install fzf zoxide fd-find ripgrep bat shellcheck yazi
@@ -38,6 +32,7 @@ sudo apt install fzf zoxide fd-find ripgrep bat shellcheck yazi
 # additional utils needed for chafa
 sudo apt install ffmpeg 7zip imagemagick
 ```
+
 ```bash
 ### fzf (download binary release) to ~/.local/bin
 wget -qO- https://github.com/junegunn/fzf/releases/download/v0.67.0/fzf-0.67.0-linux_amd64.tar.gz | tar -xz -C ~/.local/bin
@@ -82,7 +77,9 @@ npm install -g typescript
 ```
 
 # AI Agent
+
 ## Popular choices (both offline and online)
+
 ```
 # kilo
 npm install -g @kilocode/cli
@@ -98,8 +95,10 @@ npm i -g @openai/codex
 ```
 
 ## Kilo
+
 Install `npm install -g @kilocode/cli`
 Create `~/.config/kilo/opencode.json`
+
 ```
 {
   "$schema": "https://opencode.ai/config.json",
@@ -121,8 +120,10 @@ Create `~/.config/kilo/opencode.json`
 ```
 
 ## OpenCode + Ollama + gpt-oss
+
 Install `curl -fsSL https://opencode.ai/install | bash`
 Create `~/.config/opencode/opencode.json`
+
 ```
 {
   "$schema": "https://opencode.ai/config.json",
@@ -144,8 +145,10 @@ Create `~/.config/opencode/opencode.json`
 ```
 
 ## Claude Code + Ollama + gpt-oss
+
 Install `curl -fsSL https://claude.ai/install.sh | bash`
 Create `claude-ollama.sh`
+
 ```bash
 #!/bin/bash
 DEFAULT_OLLAMA_HOST="localhost"
@@ -159,7 +162,9 @@ fi
 ```
 
 ## OpenAI Codex + Ollama + gps-oss
+
 Install `npm i -g @openai/codex` and then run `codex --oss -m gpt-oss:20b` or create `~/.codex/config.toml`
+
 ```bash
 model = "gpt-oss:20b"
 model_provider = "ollama"
@@ -171,9 +176,11 @@ env_key = "<<OLLAMA_API_KEY>>"
 ```
 
 ## Cline
+
 After installing node 24, install `npm install -g cline`
 
 ## using Qwen3.5 35B-A3b FP8 vllm w/ nvidia (<100 GB)
+
 ```
 services:
   vllm-qwen:
