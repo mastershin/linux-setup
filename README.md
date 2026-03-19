@@ -31,6 +31,9 @@ sudo apt install fzf zoxide fd-find ripgrep bat shellcheck yazi
 
 # additional utils needed for chafa
 sudo apt install ffmpeg 7zip imagemagick
+
+# install bun (or via npm: npm install -g bun)
+curl -fsSL https://bun.com/install | bash
 ```
 
 ```bash
