@@ -24,15 +24,24 @@ curl --proto '=https' --tlsv1.2 -LsSf https://github.com/max-sixty/worktrunk/rel
 Starship: `curl -sS https://starship.rs/install.sh | sh -s -- -b ~/.local/bin` and add `eval "$(starship init bash)"` to .bashrc
 
 ## Developer Utils (bash / Linux)
-
+```bash
+sudo apt install podman-toolbox
+podman login quay.io
+toolbox create --distro ubuntu --release 24
+toolbox create --distro debian --release 13
 ```
+- or -
+```bash
 sudo apt install distrobox
-distrobox create --name ubuntu-dev --image ubuntu:24.04
-distrobox create --name debian-dev --image debian:13
-distrobox create --name rocky-dev --image rockylinux:9
+distrobox create --name ubuntu-dev --image ubuntu:24.04 --yes --additional-packages "fzf zoxide fd-find ripgrep bat shellcheck yazi"
+distrobox create --name debian-dev --image debian:13 --yes --additional-packages "fzf zoxide fd-find ripgrep bat shellcheck yazi"
+
+distrobox create --name rocky-dev --image rockylinux:9 --yes --additional-packages "fzf zoxide fd-find ripgrep bat shellcheck yazi"
+
 
 # for kali
-distrobox create --name kali --image docker.io/kalilinux/kali-rolling
+distrobox create --name kali --image docker.io/kalilinux/kali-rolling --yes --additional-packages "fzf zoxide fd-find ripgrep bat shellcheck"
+
 ```
 
 ```bash
