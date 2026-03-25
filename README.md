@@ -25,6 +25,16 @@ Starship: `curl -sS https://starship.rs/install.sh | sh -s -- -b ~/.local/bin` a
 
 ## Developer Utils (bash / Linux)
 
+```
+sudo apt install distrobox
+distrobox create --name ubuntu-dev --image ubuntu:24.04
+distrobox create --name debian-dev --image debian:13
+distrobox create --name rocky-dev --image rockylinux:9
+
+# for kali
+distrobox create --name kali --image docker.io/kalilinux/kali-rolling
+```
+
 ```bash
 ### Ubuntu/Debian package
 sudo apt install fzf zoxide fd-find ripgrep bat shellcheck yazi
