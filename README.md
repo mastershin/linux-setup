@@ -13,15 +13,20 @@ sudo bash install-basic-package.sh
 
 ## AI Agents Development
 
-### worktrunk via curl
+### starship prompt
+```
+Starship: `curl -sS https://starship.rs/install.sh | sh -s -- -b ~/.local/bin` and add `eval "$(starship init bash)"` to .bashrc
+```
+### rust, worktrunk
 
 ```bash
-curl --proto '=https' --tlsv1.2 -LsSf https://github.com/max-sixty/worktrunk/releases/download/v0.24.1/worktrunk-installer.sh | sh && wt config shell install
+# Rust
+curl https://sh.rustup.rs -sSf | sh
+
+# worktrunk
+cargo install worktrunk && wt config shell install
+
 ```
-
-## Prompt
-
-Starship: `curl -sS https://starship.rs/install.sh | sh -s -- -b ~/.local/bin` and add `eval "$(starship init bash)"` to .bashrc
 
 ## Developer Utils (bash / Linux)
 ```bash
