@@ -206,6 +206,44 @@ env_key = "<<OLLAMA_API_KEY>>"
 
 After installing node 24, install `npm install -g cline`
 
+## using Nvidia/Nemotron-3-super nvfp4 w/ vllm (<100 GB GPU)
+```
+services:
+  vllm-nemotron-3-super-nvfp4:
+    image: vllm/vllm-openai:v0.18.0-cu130
+    container_name: vllm-nemotron-3-super-nvfp4
+    runtime: nvidia
+    ports:
+      - "<<PORT>>:8000"
+    volumes:
+      - ~/.cache/huggingface:/root/.cache/huggingface
+    environment:
+      - VLLM_ALLOW_LONG_MAX_MODEL_LEN=1
+    ipc: host
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    command: >
+      nvidia/NVIDIA-Nemotron-3-Super-120B-A12B-NVFP4
+      --served-model-name nvidia/nemotron-3-super
+      --async-scheduling
+      --dtype auto
+      --max-model-len 1048576
+      --trust-remote-code
+      --gpu-memory-utilization 0.9
+      --max-cudagraph-capture-size 128
+      --enable-chunked-prefill
+      --mamba-ssm-cache-dtype float16
+      --reasoning-parser nemotron_v3
+      --enable-auto-tool-choice
+      --tool-call-parser qwen3_coder
+    restart: unless-stopped
+```
+
 ## using Qwen3.5 35B-A3b FP8 vllm w/ nvidia (<100 GB)
 
 ```
@@ -215,7 +253,7 @@ services:
     container_name: vllm-qwen3.5
     runtime: nvidia
     ports:
-      - "11435:8000"
+      - "<<PORTS>>:8000"
     volumes:
       - ~/.cache/huggingface:/root/.cache/huggingface
     environment:
