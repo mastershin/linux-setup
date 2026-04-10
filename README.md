@@ -18,8 +18,22 @@ sudo apt install build-essential vim git git-lfs curl wget htop tmux 7zip trash-
 # extra for more advanced developer
 sudo apt install wireguard ncdu auditd netcat-openbsd nmap rsyslog fail2ban fzf fd-find shellcheck ffmpeg imagemagick
 
-# older ubuntu (deprecated)
-# sudo bash install-basic-package.sh
+# node 24
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.4/install.sh | bash
+\. "$HOME/.nvm/nvm.sh"
+nvm install 24
+
+# uv
+curl -LsSf https://astral.sh/uv/install.sh | sh
+source $HOME/.local/bin/env
+for tool in ast-grep-cli ruff hatchling prek zizmor; do uv tool install $tool; done
+
+# claude code CLI
+curl -fsSL https://claude.ai/install.sh | bash
+
+# kilo CLI, gemini CLI, openai codex CLI, opencode AI
+npm install -g @kilocode/cli @google/gemini-cli @openai/codex opencode-ai
+
 ```
 
 ## AI Agents Development
