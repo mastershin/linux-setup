@@ -11,8 +11,12 @@ This will update system packages
 # For Debian 13 / Ubuntu 24
 sudo apt update
 sudo apt upgrade
-sudo apt install build-essential git git-lfs curl
-sudo apt install htop wireguard wget auditd netcat-openbsd trash-cli tmux nmap rsyslog fail2ban 7zip shfmt fzf zoxide fd-find ripgrep bat shellcheck ffmpeg 7zip imagemagick
+
+# basic essential packages
+sudo apt install build-essential git git-lfs curl wget htop tmux 7zip trash-cli shfmt ripgrep bat zoxide
+
+# extra for more advanced developer
+sudo apt install wireguard ncdu auditd netcat-openbsd nmap rsyslog fail2ban fzf fd-find shellcheck ffmpeg imagemagick
 
 # older ubuntu (deprecated)
 # sudo bash install-basic-package.sh
