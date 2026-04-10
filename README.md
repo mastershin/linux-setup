@@ -13,7 +13,7 @@ sudo apt update
 sudo apt upgrade
 
 # basic essential packages
-sudo apt install build-essential git git-lfs curl wget htop tmux 7zip trash-cli shfmt ripgrep bat zoxide
+sudo apt install build-essential vim git git-lfs curl wget htop tmux 7zip trash-cli shfmt ripgrep bat zoxide openssh-server
 
 # extra for more advanced developer
 sudo apt install wireguard ncdu auditd netcat-openbsd nmap rsyslog fail2ban fzf fd-find shellcheck ffmpeg imagemagick
