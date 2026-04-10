@@ -7,8 +7,15 @@ Useful linux setup for developers.
 This will update system packages
 
 ```bash
+
+# For Debian 13 / Ubuntu 24
 sudo apt update
-sudo bash install-basic-package.sh
+sudo apt upgrade
+sudo apt install build-essential git git-lfs curl
+sudo apt install htop wireguard wget auditd netcat-openbsd trash-cli tmux nmap rsyslog fail2ban 7zip shfmt fzf zoxide fd-find ripgrep bat shellcheck ffmpeg 7zip imagemagick
+
+# older ubuntu (deprecated)
+# sudo bash install-basic-package.sh
 ```
 
 ## AI Agents Development
